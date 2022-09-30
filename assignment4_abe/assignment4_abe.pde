@@ -6,6 +6,7 @@ av34626
 //Global variables
 Ground ground;
 UFO flying_disk, flying_disk2;
+Sun s1, s2;
 PVector UFO1, UFO2;
 PVector SpeedUFO1, SpeedUFO2;
 PVector groundCoordinates;
@@ -28,12 +29,16 @@ void setup(){
   ufo_color2 = new color[] {color(55, 119, 227), color(236, 250, 56), color(219, 93, 188)};
   
   //Setting up the coordinates for the ground
-  groundCoordinates = new PVector(0, 500);
+  groundCoordinates = new PVector(0, 600);
   
   //Setting up the UFO and ground variables
   ground = new Ground(groundCoordinates, color(13, 250, 69));
   flying_disk = new UFO(UFO1, SpeedUFO1, ufo_color1, ground);
   flying_disk2 = new UFO(UFO2, SpeedUFO2, ufo_color2, ground);
+  
+  //Setting up the values of s1 and s2
+  s1 = new Sun();
+  s2 = new Sun(new PVector (width/2, 100), 40, .4, 2, 2, s1.ray_color, s1.center_color, new PVector (40, 80));
  
   
 }
@@ -43,6 +48,10 @@ void setup(){
 void draw(){
   //Draw the background
   ground.resetCanvas();
+  
+  //Display the sun
+  s1.display();
+  s2.display();
   
   //Draw out the UFO
   flying_disk.display();
