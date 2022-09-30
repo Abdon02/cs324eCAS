@@ -1,6 +1,6 @@
 class Clouds
 {
-  
+  //variables
   PVector location;
   int radiusDisplacement;
   float radius;
@@ -43,6 +43,7 @@ class Clouds
   }
   
   void Cloud() {
+    //draw the clouds
     noStroke();
     fill(Color);
     ellipse(this.location.x, this.location.y, radius, radius);
@@ -51,7 +52,7 @@ class Clouds
   }
   
   
-  //Move
+  //Moves the cloud horizontally
   void move()
   {
     this.location.x += this.translationSpeed;
@@ -63,12 +64,12 @@ class Clouds
   }
   
   void grow(){
-    
+    //change the size based on if its too big or small
     if(this.radius < 95 - this.radiusDisplacement ||  this.radius > 85 + this.radiusDisplacement) {
       growShrink *= -1;
     }
     //increment the size with the size speed (be it positive or negative)
     this.radius += growShrink;
-
+    
     }
 }

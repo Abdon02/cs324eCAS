@@ -1,4 +1,5 @@
 class Rain extends Clouds {
+  //variables
   float fallingSpeed;
   
   Rain(PVector location, int radiusDisplacement, int radius, float translationSpeed, float growShrink, color Color, float fallingSpeed) {
@@ -6,12 +7,14 @@ class Rain extends Clouds {
     this.fallingSpeed = fallingSpeed;
   }
   
+  //Display
   void display() {
     this.rainDrop();
     this.move();
   }
   
   void rainDrop() {
+    //create the rain drops
     noStroke();
     fill(this.Color);
     // rain drop 1 left
@@ -27,10 +30,13 @@ class Rain extends Clouds {
 }
 
   void move() {
+   //moving the raindrops down the screen and reset when it almost the ground
    this.location.y += this.fallingSpeed;
-    if (this.location.y >= height/2){
-      this.location.y = (this.location.y - height/2 + this.radius);
+    if (this.location.y >= 600){
+      this.location.y = (this.location.y - 600 + this.radius);
     }
+    
+   // moves the raindrops with the clouds
    this.location.x += this.translationSpeed;
     if (this.location.x >= width + 150){
       this.location.x = -150;
