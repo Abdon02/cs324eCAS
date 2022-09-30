@@ -66,7 +66,7 @@ void draw(){
   rainDrops2.display();
   rainDrops3.display();
   
-    //Display the sun
+  //Display the sun
   s1.display();
   s2.display();
   
