@@ -7,6 +7,8 @@ av34626
 Ground ground;
 UFO flying_disk, flying_disk2;
 Sun s1, s2;
+Clouds Cloud1, Cloud2, Cloud3;
+Rain rainDrops1, rainDrops2, rainDrops3;
 PVector UFO1, UFO2;
 PVector SpeedUFO1, SpeedUFO2;
 PVector groundCoordinates;
@@ -40,7 +42,13 @@ void setup(){
   s1 = new Sun();
   s2 = new Sun(new PVector (width/2, 100), 40, .4, 2, 2, s1.ray_color, s1.center_color, new PVector (40, 80));
  
-  
+ //Setting up the values for clouds and rain
+  Cloud1 = new Clouds();
+  Cloud2 = new Clouds(new PVector (350.0, 80), 50, 80, 1, 1, color(255));
+  Cloud3 = new Clouds(new PVector (700.0, 80), 20, 90, 1, 0.6, color(255));
+  rainDrops1 = new Rain(new PVector (20.0, 80), 30, 80, 1.0, 0.2, color(#9DD5FF), 1.25);
+  rainDrops2  = new Rain(new PVector (350.0, 80), 50, 80, 1, 1, color(#9DD5FF), 0.5);
+  rainDrops3 = new Rain(new PVector (700.0, 80), 20, 90, 1, 0.6, color(#9DD5FF), 0.75);
 }
 
 
@@ -49,7 +57,16 @@ void draw(){
   //Draw the background
   ground.resetCanvas();
   
-  //Display the sun
+  
+  //Display the Clouds and Rain
+  Cloud1.display();
+  Cloud2.display();
+  Cloud3.display();
+  rainDrops1.display();
+  rainDrops2.display();
+  rainDrops3.display();
+  
+    //Display the sun
   s1.display();
   s2.display();
   
