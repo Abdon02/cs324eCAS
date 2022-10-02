@@ -1,8 +1,3 @@
-/*
-Abdon Verdejo-Parada
-av34626
-*/
-
 class UFO {  
   //Class variables
   PVector ufoSpeed; //Speed that ufo will move in the x and y direction

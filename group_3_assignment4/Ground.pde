@@ -1,8 +1,3 @@
-/*
-Abdon Verdejo-Parada
-av34626
-*/
-
 class Ground {
   //Class variables
   color ground_color;

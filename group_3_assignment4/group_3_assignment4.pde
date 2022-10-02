@@ -1,6 +1,10 @@
 /*
+This is the main file that will call the classes to create the animation
+
+Collaborators:
+Sydney Suthar
+Christina Nguyen
 Abdon Verdejo-Parada
-av34626
 */
 
 //Global variables
@@ -23,7 +27,7 @@ void setup(){
   //setting up the values for UFOs
   UFO1 = new PVector(0, 150, 250);
   UFO2 = new PVector(0, 300, 300);
-  SpeedUFO1 = new PVector(3, 1);
+  SpeedUFO1 = new PVector(1, 1);
   SpeedUFO2 = new PVector(2, 1);
   
   //Setting up the colors that will be used
