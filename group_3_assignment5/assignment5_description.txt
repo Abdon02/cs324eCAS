@@ -1,0 +1,3 @@
+Our animation shows outer space. We plan included an Earth with a Moon orbiting it, a Comet with Stars rotating, and a Spaceship with a changing flame trail. The sequence is expected to go indefinitely, continuing in a loop.
+
+Sydney is responsible for the Earth and Moon in our animation. The Earth spins on its axis, while the moon rotates around the Earth in orbit. The Earth moves in a path around a central point, with the moon sitll orbiting. The plant class allows for a customizable center point, radius, scale from center, and rotational speeds. These are the rotational speeds of the Earth on its axis, around the center point, and the moon around the Earth. The two planets here vary in radius, center scale, and rotational speeds.
