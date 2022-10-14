@@ -1,16 +1,63 @@
 planet earth1;
 planet earth2;
+Star Stars;
+Comet comet;
+
+//variables and parameters to create stars
+int depth = 7;
+int numStarsMax = 3500;
+Star[] tabStars = new Star[numStarsMax];
+int maxStarsSpeed = 2;
+// boolean to reset screen or not
+boolean clearScreen = true;
+// Rotation variable
+int rotationMode = 2;
+float angle = 0;
+float delta = radians(0.15);
 
 void setup(){
   size(700, 700, P3D);
   earth1 = new planet();
   earth2 = new planet( new PVector (height/2, width/2, width/2), 15, 60, new PVector (PI/60, PI/200, PI/500));
   noStroke();
+  
+  //stars background setup
+  colorMode(RGB,255);
+  loop();
+  strokeWeight(1);
+  //draws a point for the star randomly until number of max stars is hit
+  for(int num=0; num<numStarsMax; num++) {
+    tabStars[num] = new Star(random(-2*width,2*width),random(-2*height,2*height),
+                               -random(depth*255),random(1,maxStarsSpeed)); }
+  comet = new Comet();
 }
-
 void draw(){
   // Redraw background
-  background(255);
+  if(clearScreen == true) {
+    background(0);
+  }
+  //translate and rotate on canvas
+  pushMatrix();
+  translate(width/2+(((width/2))*10)/(width/2),
+            height/2+(((height/2))*10)/(height/2),
+            0);
+  rotateY(-(((width/2))*radians(30))/(width/2));
+  
+  
+  if(rotationMode==2) {
+    angle -= delta;
+  }
+  rotateZ(angle);
+  for(int num=0; num<numStarsMax; num++) {
+    tabStars[num].dots();
+    tabStars[num].anim();
+  }
+  popMatrix();
+
+  pushMatrix();
+    translate(0, 50, 0);
+    comet.display();
+  popMatrix();
   
   // Draw Sun in center
   pushMatrix();
