@@ -45,6 +45,8 @@ void setup(){
   ballsColor = color(235, 245, 239);
   int numberofBalls = 4;
   sp1 = new SpaceShip(9, sp1StartCoor, spaceshipColor, ballsColor, numberofBalls);
+  
+  frameRate(60);
 }
 void draw(){
   // Redraw background
