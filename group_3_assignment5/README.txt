@@ -9,9 +9,9 @@ Steps:
 	"SpaceShip.pde"
 	"Star.pde"
 	"group_3_assignment5.pde"
- 	"cometTexture"
-	"earth_tex"
-	"moon_tex"
+ 	"cometTexture.png"
+	"earth_tex.png"
+	"moon_tex.png"
 	"assignment5_description.txt"
 
 2. Open the file, "group_3_assignment5.pde" and hit play
