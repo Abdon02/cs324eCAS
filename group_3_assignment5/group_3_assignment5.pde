@@ -72,6 +72,7 @@ void draw(){
   pushMatrix();
     translate(0, 50, 0);
     comet.display();
+
   popMatrix();
   
   // Draw Sun in center
