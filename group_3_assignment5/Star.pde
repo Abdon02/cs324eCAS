@@ -30,9 +30,6 @@ class Star {
             0);
   rotateY(-(((width/2))*radians(30))/(width/2));
   rotateX((((height/2))*radians(30))/(width/2));
-  if(rotationMode==1) {
-    angle += delta;
-  }
   if(rotationMode==2) {
     angle -= delta;
   }
