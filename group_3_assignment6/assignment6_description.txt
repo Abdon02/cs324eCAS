@@ -1,0 +1,5 @@
+Our simulation is a board game with autonomously moving pieces. Each piece starts in the top left corner, and it is a race to the finish line in the bottom right corner. Each piece type will have its own unique set of rules.
+
+Abdon will do the board where the characters will play and move. The board will have different colors. The only colors that will be on the board will include, but subject to change are: red, green, blue, white. The white tiles will be used as buffer tile that has no significance on the characters that are on the board. 
+
+Sydney’s character will be the cat. If the cat is on a square more matching colors than enemy colors, it will move 2 to the right and 2 down. If the cat is on a square with equal numbers of matching colors and enemy colors, it will move to 1 the right and 2 down. If the cat is on a square with more enemy colors than matching colors, it will move 2 to the right and 1 down. The cat has the goal of reaching the bottom right square.
