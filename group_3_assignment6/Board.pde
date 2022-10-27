@@ -17,27 +17,26 @@ class Board{
   
   int getsizeBox(){
     /*
-    This functions is going compute the sieBox value
+    This functions is going compute the sizeBox value
     */
     
     //End of function
-    return (int)(width / boardSize);    
+    return (int)(width / this.boardSize);    
   }
   
   void displayBoard(){
     /*
     This function is going to display the board on the canvas
     */
-    
-    for(int row = 0; row < currentBoard.length; row++){
-      for(int col = 0; col < currentBoard.length; col++){
-        if(currentBoard[row][col] == 1){
+    for(int row = 0; row < this.currentBoard.length; row++){
+      for(int col = 0; col < this.currentBoard.length; col++){
+        if(this.currentBoard[row][col] == 1){
          //This will be a red tile
          fill(255, 0, 0);
-        }else if(currentBoard[row][col] == 2){
+        }else if(this.currentBoard[row][col] == 2){
           //This will be a green tile
           fill(0, 255, 0);
-        }else if(currentBoard[row][col] == 3){
+        }else if(this.currentBoard[row][col] == 3){
           //This will be a blue tile
           fill(0, 0, 255);          
         }else{
@@ -46,9 +45,9 @@ class Board{
         }
         
         //Draw out the rectangles on the canvas
-        int x = row * sizeBox;
-        int y = col * sizeBox;
-        rect(x, y, sizeBox, sizeBox);
+        int x = row * this.sizeBox;
+        int y = col * this.sizeBox;
+        rect(x, y, this.sizeBox, this.sizeBox);
       }
     }
     
@@ -60,8 +59,8 @@ class Board{
     /*
     This function is going to create a random board    
     */
-    int row = (int)(width / sizeBox);
-    int col = (int)(height / sizeBox);
+    int row = (int)(width / this.sizeBox);
+    int col = (int)(height / this.sizeBox);
     
     //Creating the boardCreated
     int [][] boardCreated = new int [row][col];

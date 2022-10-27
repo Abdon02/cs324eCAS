@@ -1,8 +1,10 @@
 //Variables
 Board playingBoard;
 int boardSize;
+cat kitty;
 
 void setup(){
+  frameRate(2);
   //Size of the canvas
   size(800, 800);
   
@@ -11,10 +13,15 @@ void setup(){
   
   //setting up the class variables
   playingBoard = new Board(boardSize);  
+  kitty = new cat(new PVector (playingBoard.sizeBox/2, playingBoard.sizeBox/2), .32, color (300, 0,0));
+
   
 }
 
 void draw(){
   //Displaying the board on the canvas
   playingBoard.displayBoard();
+  
+  // Move cat
+  kitty.move(playingBoard);
 }
