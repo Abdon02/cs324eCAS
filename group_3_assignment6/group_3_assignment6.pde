@@ -31,8 +31,6 @@ void draw(){
   // Move cat
   kitty.move(playingBoard);
   
-  //For the fish
+  //Display the fish
   blueFish.display();
-  blueFish.moveFishCoordinates();
-  blueFish.moveToStart();
 }
