@@ -4,6 +4,7 @@ int boardSize;
 cat kitty;
 BluePiece blueFish; //This is the blue fish character piece 
 PImage blueFishImage; //This is the PImage of the blue fish
+Frog froggy;
 
 void setup(){
   frameRate(2);
@@ -22,6 +23,7 @@ void setup(){
   PVector startingPoint = new PVector(0, 0);
   blueFish = new BluePiece(blueFishImage, boardSize, playingBoard, startingPoint);
   
+   froggy = new Frog(new PVector (playingBoard.sizeBox/2, playingBoard.sizeBox/2), 0.3, color (0, 180, 60));
 }
 
 void draw(){
@@ -33,4 +35,7 @@ void draw(){
   
   //Display the fish
   blueFish.display();
+  
+  // Display the moving frog
+  froggy.move(playingBoard);
 }
