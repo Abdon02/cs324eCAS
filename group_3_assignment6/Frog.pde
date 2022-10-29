@@ -1,7 +1,7 @@
 // RULES
-//  - If there is more enemies than friends, the fish will move to the 2 right and 1 down
-//  - If there is more friends than enemies, the fish will move to the 1 right and 3 down
-//  - If there is equal number of friends and enemies, the fish will move 1 right and 1 down 
+//  - If there is more enemies than friends, the frog will move to the 2 right and 1 down
+//  - If there is more friends than enemies, the frog will move to the 1 right and 3 down
+//  - If there is equal number of friends and enemies, the frog will move 1 right and 1 down 
 
 class Frog {
     

@@ -6,4 +6,6 @@ Abdon also created a fish character. The fish icon was created by importing a .j
 
 Sydney’s character will be the cat. If the cat is on a square more matching colors than enemy colors, it will move 2 to the right and 2 down. If the cat is on a square with equal numbers of matching colors and enemy colors, it will move to 1 the right and 2 down. If the cat is on a square with more enemy colors than matching colors, it will move 2 to the right and 1 down. The cat has the goal of reaching the bottom right square.
 
+Christina's character for the game will be a frog. The colors of the frog will be green with the corresponding tiles. If there is more enemies than friends, the frog will move to the 2 right and 1 down. If there is more friends than enemies, the frog will move to the 1 right and 3 down. If there is equal number of friends and enemies, the frog will move 1 right and 1 down. The goal for the frog is to reach the bottom right square.
+
 
