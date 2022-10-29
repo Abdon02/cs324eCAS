@@ -5,6 +5,8 @@ This is the process to run the animation for group_3_assignment6
 Steps:
 1. Make sure that inside the folder "group_3_assignment6" has the following files:
 	"Board.pde"
+	"BluePiece.pde"
+	"/images/blueFish.jpg"
 	"Cat.pde"
 	"group_3_assignment6.pde"
 	"assignment6_description.txt"
