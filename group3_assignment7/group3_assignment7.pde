@@ -1,11 +1,14 @@
 options options1;
 home home1;
+character player;
+
 
 void setup(){
   rectMode(CENTER);
   size(800, 800);
   options1 = new options();
   home1 = new home();
+  player = new character();
 }
 
 void draw(){
@@ -17,6 +20,7 @@ void draw(){
   if (options1.pause){
     options1.display(home1);
   }
+  player.move();
 }
 
 void setting(){
