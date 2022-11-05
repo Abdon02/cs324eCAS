@@ -17,8 +17,8 @@ class character{
 
   void move()
   {
-    monkey = loadImage("monkey.png");
-    basket = loadImage("basket.png");
+    monkey = loadImage("./pictures/monkey.png");
+    basket = loadImage("./pictures/basket.png");
     image(monkey, x, y, w, h);
     image(basket, x+23, y+50, w-50, h-50);
   }
