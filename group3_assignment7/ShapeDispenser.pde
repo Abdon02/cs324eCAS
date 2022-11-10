@@ -10,7 +10,8 @@ This class has a relationship (refers to other class(es)) with:
 class ShapeDispenser{
   //Class variables
   PVector numShapes; //This will be the number of circles, squares, and triangles (circle, squares, triangles)
-  SquarePoints square;  //This will start a SquarePoint class instance
+  //SquarePoints square;  //This will start a SquarePoint class instance
+  SquarePoints square;
   TrianglePoints triangle; //This will start a TrianglePoints class instance
   CirclePoints circle;  //This will start a CirclePoints class instance
   int circleCounter; //This will be the counter for the circle
@@ -75,16 +76,18 @@ class ShapeDispenser{
       - shapePosition: It will be an array with positions of a shape alredy randomized
     */
     
+    int h = 0;
     //looping through the positionArray
     for(int i = 0; i < shapePositions.length; i++){
-      shapePositions[i] = new PVector(random(50, width - 50), 0);
+      shapePositions[i] = new PVector(random(50, width - 50), h, 0);
+      h -= 30;
     }
     
     //returning the array of PVectors
     return shapePositions;    
   }
     
-  void dispenseShape(){
+  void dispenseShape(character player){
     /*
     This function is going to dispense a new shape into the canvas when it is called.
     This function is going to be calles in the draw function.
@@ -94,7 +97,7 @@ class ShapeDispenser{
     this.nextShape();    
     
     //Now we display that shape to the canvas, we call all of the classes (circle, square, triangle)
-    this.displayShapes();
+    this.displayShapes(player);
     
     //End of function
     return;
@@ -111,14 +114,31 @@ class ShapeDispenser{
     return false;
   }
   
-  void displayShapes(){
+  void displayShapes(character player){
     /*
     This function is going to call the shapes classes to display the shapes on the canvas
     */
     
-    circle.loopShapes(this.circleCounter);
-    square.loopShapes(this.squareCounter);
-    triangle.loopShapes(this.triangleCounter);    
+    circle.loopShapes(this.circleCounter, player);
+    square.loopShapes(this.squareCounter, player);
+    triangle.loopShapes(this.triangleCounter, player);
+    
+    int points = 0;
+    
+    for(int i = 0; i < circle.numShapes; i++){
+      points += circle.shapePositions[i].z;
+    }
+    
+    for(int i = 0; i < triangle.numShapes; i++){
+      points -= triangle.shapePositions[i].z;
+    }
+    
+    for(int i = 0; i < square.numShapes; i++){
+      points += 2 * square.shapePositions[i].z;
+    }
+    
+    player.score = points;
+
     
     //End of function
     return;

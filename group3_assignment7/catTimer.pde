@@ -24,7 +24,7 @@ class catTimer extends timer{
   }
   
   // Count what current cat frame should be
-  int countcurrentFrame(int currentFrame, int numFrames){
+  int countcurrentFrame(){
     if (reset){
       this.timeElapsed = 0; // If reset, rest time elapsed
     } else if((millis() - this.timeElapsed) >= this.interval) {
@@ -36,7 +36,7 @@ class catTimer extends timer{
   
   // Display cat
   void display(){
-    this.currentFrame = this.countcurrentFrame(this.currentFrame, this.frames);
+    this.currentFrame = this.countcurrentFrame();
     image(this.cats[this.currentFrame], this.cat_loc, this.location.y - this.restart_button.size.y/2 - 70, 75, 75);
     this.cat_loc += this.restart_button.size.x/this.interval; // Move cat across restart button
     if (this.cat_loc >= this.location.x + this.restart_button.size.x/2 - 75){
