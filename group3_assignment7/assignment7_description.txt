@@ -1,3 +1,9 @@
-This game will have a character that will be catching falling items from the sky. The character will move left and right. Different shapes of items will be falling from the sky and each item will be worth differently. Depending on the final score, the player will get either 1, 2 or 3 stars and the game will be over. This game will have the following functionalities: Pause, Resart, Quit, and Resume.
+This game will have a character that will be catching falling items from the sky. The character will move left and right with left and right arrows. Different shapes of items will be falling from the sky and each item will be worth differently. The player can make the basket invisible, via the Shift key which prevents the catching of any items and accruing of any points. Depending on the final score, the player will get either 1, 2 or 3 stars and the game will be over, with the option to restart. 5 points earns one star, 15 earns two stars, and 25 earns three stars. The pause menu can be activated with the space bar, allowing the player to restart, quit, or resume. Throughout the game, the player's score is displayed in the top right corner.
+
+
 
 Abdon will be responsible of creating the falling items from the sky. The items that will be falling from the sky will include the following: circles, triangles and squares. The circles will be worth 1 point, the triagles will be deduct 1 point, and the squares will be worth 2 points.
+
+Sydney will be responsible for pause menus and incorporating them into the game.
+
+Christina will be responsible for the player class.

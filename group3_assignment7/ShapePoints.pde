@@ -1,9 +1,9 @@
 class ShapePoints{
   //Class variables
   int numShapes; //The number of shapes that will be displayed
-  float size; //The size of the each circle that will be 
+  float size; //The size of the each shape that will be 
   float fallingSpeed; //This is the falling speed that all the shapes of this class will experience
-  color [] colorArray; //This array will hold an image that will be correlated to a specific circle
+  color [] colorArray; //This array will hold an image that will be correlated to a specific shape
   PVector [] shapePositions; //This array will hold the position of each shape
   boolean releasedShapes; // This will see if all the shapes have been displayed already
   int shapeGround; //This is the new shape that is already in ground and values beforehand shouldnt be drawn
@@ -40,7 +40,7 @@ class ShapePoints{
       - ite: (int) this is the current iteration count
       
     Output:
-      - It will display the row of circles into the canvas
+      - It will display the row of shapes into the canvas
     */
     
     //Checks if all the shapes have been realead
@@ -53,7 +53,8 @@ class ShapePoints{
     //This will loop through the values
     for(int i = this.shapeGround; i < ite; i++){
       if (player.x + 41 <= shapePositions[i].x && player.x + 154 >= shapePositions[i].x &&
-          player.y + 132 <= shapePositions[i].y && player.y + 132 >= shapePositions[i].y){
+          player.y + 132 <= shapePositions[i].y && player.y + 132 >= shapePositions[i].y
+          && !player.invisible_basket){
         shapePositions[i].z = 1;
       }
     

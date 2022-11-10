@@ -1,5 +1,6 @@
 class options extends menu{
-  button resume_button, quit_button; 
+  button resume_button, quit_button;
+  boolean restart;
   
   // Default constructor
   options(){
@@ -8,8 +9,10 @@ class options extends menu{
     // Extra buttons needed
     this.resume_button = new button( new PVector(location.x, location.y - size.y/4), new PVector (size.x/1.5, size.y/5), "Resume");
     this.quit_button = new button( new PVector(location.x, location.y + size.y/4), new PVector (size.x/1.5, size.y/5), "Quit");
+    this.restart = false;
   }
   
+  // Define display
   void display(home home1){
     stroke(0);
 
@@ -22,12 +25,12 @@ class options extends menu{
     // Button conditions
     if (resume_button.buttonClicked()){
       this.pause = false;
-      // Other resume options
     } else if (restart_button.buttonClicked()){
       this.pause = false;
-      // Other restart options
+      this.restart = true;
     } else if (quit_button.buttonClicked()){
       this.pause = false;
+      this.restart = true;
       home1.pause = true;
       // Other quit options
     }

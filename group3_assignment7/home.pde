@@ -1,11 +1,13 @@
 class home extends menu{
   catTimer cat_timer;
   
+  // Default constructor
   home(){
     super(new PVector(width/2, height/2), new PVector(width/2, height/2), true, "Start"); // Use menu to make Start button
     cat_timer = new catTimer(location, restart_button); //Cat timer to control cat across screen
   }
   
+  // Define display
   void display(){
     cat_timer.reset = false; 
     stroke(0);
@@ -19,8 +21,6 @@ class home extends menu{
     if (restart_button.buttonClicked()){
       this.pause = false;
       cat_timer.reset();
-      
-      // Other restart options
     }
   }
 
