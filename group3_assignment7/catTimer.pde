@@ -19,7 +19,7 @@ class catTimer extends timer{
     
     // Assign images
     for (int i = 0; i < this.frames; i++){
-      this.cats[i] = loadImage("./pictures/" +nf(i+1) + ".png");
+      this.cats[i] = loadImage("./pictures/" +nf(i+1) + ".png"); // Images found at https://www.kindpng.com/imgv/ibhwww_running-cat-sprite-sheet-hd-png-download/
     }
   }
   
