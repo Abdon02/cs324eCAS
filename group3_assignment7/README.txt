@@ -45,6 +45,7 @@ Steps:
 	6. If your end score is between 5 and 14 points you will get 1 star
 	7. IF your end score is between 15 and 24 points you will get 2 stars
 	8. If your end score is greater than 25 points you will get 3 starts
+	9. Pressing shift toggles the basket and prevents catching items.
 
 
 
