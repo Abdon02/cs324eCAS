@@ -7,3 +7,8 @@ Abdon will be responsible of creating the falling items from the sky. The items 
 Sydney will be responsible for pause menus and incorporating them into the game.
 
 Christina will be responsible for the player class. She created the monkey character and the basket character and worked on the functionality of the character with the help of Sydney.
+
+Images were found at:
+- Cat Sprite: https://www.kindpng.com/imgv/ibhwww_running-cat-sprite-sheet-hd-png-download/
+- Basket: https://pngtree.com/freepng/basket_5407070.html
+- Monkey: https://pngtree.com/freepng/cartoon-cute-vector-funny-little-monkey-material-monkey-clipart_5532780.html
