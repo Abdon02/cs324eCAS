@@ -1,4 +1,6 @@
 // Define global variables
+import processing.sound.*;
+SoundFile file;
 options options1;
 home home1;
 win win1;
@@ -27,6 +29,8 @@ void setup(){
   home1 = new home();
   win1 = new win();
   player = new character();
+  file = new SoundFile(this, "background.mp3");
+  file.play();
   
   //Setting up the values that will be needed for instantiating the dispenser
   numberOfShapes = (int) (numShapes.x + numShapes.y + numShapes.z);
