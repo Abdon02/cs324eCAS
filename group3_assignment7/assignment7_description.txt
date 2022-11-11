@@ -2,8 +2,8 @@ This game will have a character that will be catching falling items from the sky
 
 
 
-Abdon will be responsible of creating the falling items from the sky. The items that will be falling from the sky will include the following: circles, triangles and squares. The circles will be worth 1 point, the triagles will be deduct 1 point, and the squares will be worth 2 points.
+Abdon will be responsible of creating the falling items from the sky. The items that will be falling from the sky will include the following: circles, triangles and squares. The circles will be worth 1 point, the triangles will be deduct 1 point, and the squares will be worth 2 points.
 
 Sydney will be responsible for pause menus and incorporating them into the game.
 
-Christina will be responsible for the player class.
+Christina will be responsible for the player class. She created the monkey character and the basket character and worked on the functionality of the character with the help of Sydney.
