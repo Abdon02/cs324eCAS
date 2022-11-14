@@ -1,21 +1,22 @@
-<<<<<<< HEAD
-Paddles paddle;
+home h1;
+options o1;
 
 void setup(){
   size(800, 500);
+  h1 = new home();
+  o1 = new options();
   background(0);
-  paddle = new Paddles();
 }
 
 void draw(){
-}
-=======
-void setup(){
-  size(800, 500);
-}
-
-void draw(){
-  backdrop();
+  o1.keyPressed(h1);
+  if (h1.pause){
+    h1.display();
+  } else if (o1.pause){
+    o1.display(h1);
+  } else {
+    backdrop();
+  }
 }
 
 void backdrop(){
@@ -27,4 +28,3 @@ void backdrop(){
     rect(width/2, i, 20, 20);
   }
 }
->>>>>>> ca24173d00fe05173398928b96c2e3cf1694b2d5
