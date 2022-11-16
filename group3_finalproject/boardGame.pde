@@ -1,8 +1,8 @@
 class boardGame{
   //Class variables
   ballMovement ball;
-  paddels right;
-  paddels left;
+  paddles right;
+  paddles left;
   int leftscore;
   int rightscore;
   
@@ -10,8 +10,8 @@ class boardGame{
   boardGame(){ 
     //Defining the class variables
     ball = new ballMovement();
-    right = new paddels(true);
-    left =  new paddels(false);
+    right = new paddles(true);
+    left =  new paddles(false);
     leftscore = 0;
     rightscore = 0;
     
@@ -20,7 +20,7 @@ class boardGame{
   }
   
   //Specific constructor
-  boardGame(ballMovement ball, paddels left, paddels right){
+  boardGame(ballMovement ball, paddles left, paddles right){
     //Defining the class variables
     this.ball = ball;
     this.right = right;
@@ -32,7 +32,7 @@ class boardGame{
   
   void touchedPaddles(){
     /*
-    This function will modify the ball coordinates if it touched the paddels
+    This function will modify the ball coordinates if it touched the paddles
     */
     
     if(right.hasBallTouched(true, ball) || left.hasBallTouched(false, ball)){
@@ -80,7 +80,13 @@ class boardGame{
     This function is going to display the game board on the canvas
     */
     
+    rectMode(CENTER);
     background(0);
+    noStroke();
+    fill(255);
+    for (int i = 10; i<=height -10; i+= 30){
+      rect(width/2, i, 20, 20);
+    }
     
     //Display the score
     this.displayScores();
