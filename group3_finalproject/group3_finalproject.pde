@@ -1,3 +1,4 @@
+import processing.sound.*;
 home h1;
 options o1;
 win w1;
@@ -5,6 +6,7 @@ ballMovement ball;
 paddles right;
 paddles left;
 boardGame board;
+SoundFile file;
 
 void setup(){
   size(800, 500);
@@ -12,13 +14,15 @@ void setup(){
   o1 = new options();
   w1 = new win();
   background(0);
+  file = new SoundFile(this, "./files/bounce.mp3");
+
   
   //Initilizing the ball
   ball = new ballMovement();
   
   //Initilizing the paddles
-  right = new paddles(true);
-  left = new paddles(false);  
+  right = new paddles(true, file);
+  left = new paddles(false, file);  
   
   //initializing the board
   board = new boardGame(ball, left, right);
@@ -34,8 +38,8 @@ void draw(){
     ball = new ballMovement();
     
     //Initilizing the paddles
-    right = new paddles(true);
-    left = new paddles(false);  
+    right = new paddles(true, file);
+    left = new paddles(false, file);  
     
     //initializing the board
     board = new boardGame(ball, left, right);

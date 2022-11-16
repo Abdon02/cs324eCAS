@@ -10,8 +10,8 @@ class boardGame{
   boardGame(){ 
     //Defining the class variables
     ball = new ballMovement();
-    right = new paddles(true);
-    left =  new paddles(false);
+    right = new paddles(true, file);
+    left =  new paddles(false, file);
     leftscore = 0;
     rightscore = 0;
     

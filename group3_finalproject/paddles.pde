@@ -5,13 +5,15 @@ class paddles{
   float heightPaddle;
   float widthPaddle;
   float verticalSpeed;
+  SoundFile file;
   
   //This is the default constructor that will create the left or right paddle
-  paddles(boolean rightPaddle){
+  paddles(boolean rightPaddle, SoundFile file){
     //Defining the class variables
     this.heightPaddle = 60;
     this.widthPaddle = 10;
     this.verticalSpeed = 30;
+    this.file = file;
     
     if(rightPaddle){
       //If it is then we create the right paddle
@@ -89,6 +91,7 @@ class paddles{
     */
     
     if((ball.ballCoordinates.y > paddlePos.y - (heightPaddle / 2)) && (ball.ballCoordinates.y < paddlePos.y + (heightPaddle / 2))){
+      file.play();
       return true;
     }
     
