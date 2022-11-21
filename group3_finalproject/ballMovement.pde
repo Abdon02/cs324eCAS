@@ -4,6 +4,8 @@ class ballMovement{
   PVector ballCoordinates; //This is the ball coordinates that will be changing around the game
   float sizeBall; //This will be the radius of the ball that will be displayed
   PVector xyVel; //This is the x and y velcity that will change accordingly as the ball bounces around
+  float xVel; //This variable will hold the original xVal velocity
+  float yVel; //This variable will hold the original yVal velocity
   
   //Default constructor
   ballMovement(){
@@ -11,7 +13,9 @@ class ballMovement{
     this.ballColor = color (255, 255, 255);
     this.ballCoordinates = new PVector(width/2, height / 2);
     this.sizeBall = 15;
-    this.xyVel = new PVector(5, 1);    
+    this.xyVel = new PVector(3, 1);    
+    this.xVel = this.xyVel.x;
+    this.yVel = this.xyVel.y;
     
     //End of function
     return;
@@ -23,7 +27,9 @@ class ballMovement{
     this.ballColor = ballColor;
     this.ballCoordinates = new PVector(width / 2, height / 2);
     this.sizeBall = sizeBall;
-    this.xyVel = xyVel;    
+    this.xyVel = xyVel; 
+    this.xVel = this.xyVel.x;
+    this.yVel = this.xyVel.y;
     
     //End of function
     return;
@@ -87,6 +93,102 @@ class ballMovement{
     //If the ball is out of play then it gets reset back to the middle of the canvas
     ballCoordinates.x = width / 2;
     ballCoordinates.y = height / 2;
+    
+    //End of function
+    return;
+  }
+  
+  void changeYvel(){
+    /*
+    This function is going to change the y value of the velocity
+    */
+    
+    if(random(0, 1) <= 0.5){
+      this.xyVel.y = -this.xyVel.y;
+    }else{
+      this.xyVel.y = this.xyVel.y;
+    }
+    
+    //End of function
+    return;
+  }
+  
+  void originalVelocities(){
+    /*
+    This function is going to change to the original velocity
+    */
+    
+    //Changing the values of velcities back
+    this.xyVel.x = this.xVel;
+    this.xyVel.y = this.yVel;
+    
+    //End of function
+    return;
+  }
+  
+  void incXVel(float value){
+    /*
+    This function is going to increase the X Velocity of the ball
+    */
+    
+    if(this.xyVel.x < 0){
+      this.xyVel.x -= value;
+    }else{
+      this.xyVel.x += value;
+    }
+    
+    //End of function
+    return;
+  }
+  
+  void incYVel(float value){
+    /*
+    This function is going to increase the Y Velocity of the ball
+    */
+    
+    if(this.xyVel.y < 0){
+      this.xyVel.y -= value;
+    }else{
+      this.xyVel.y += value;
+    }
+    
+    //End of function
+    return;
+  }
+  
+  void moveRight(){
+    /*
+    This function is going to make the ball go to the right after Player 1 has scored.
+    This function will also change the direction as it is going to travel. It will choose a random value.
+    */
+    
+    //Change the velocites back to its original values
+    this.originalVelocities();
+    
+    //Change the y velocity
+    this.changeYvel();
+    
+    //Moving the ball to the middle of the canvas
+    this.resetBall();
+    
+    //End of function
+    return;
+  }
+  
+  void moveLeft(){
+    /*
+    This function is going to make the ball go to the left after Player 2 scored.
+    This function will also change the direction as it is going to travel. It will choose a random value.
+    */
+    
+    //Change the velocites back to its original values
+    this.originalVelocities();
+    
+    //Change the y velocity
+    this.changeYvel();
+    
+    //Moving the ball to the middle of the canvas
+    this.resetBall();
     
     //End of function
     return;

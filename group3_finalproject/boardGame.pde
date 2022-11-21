@@ -1,10 +1,11 @@
 class boardGame{
   //Class variables
-  ballMovement ball;
-  paddles right;
-  paddles left;
-  int leftscore;
-  int rightscore;
+  ballMovement ball; //This variable corresponds to the ball
+  paddles right; //This variable corresponds to the right paddle
+  paddles left; //This variable corresponds to the left paddle 
+  int leftscore; //This variable will count the score of the left player
+  int rightscore; //This variable will count the score of the right player
+  int count; //This varialble will count how long th rally is. If the rally is really big then we will increase the ball velocities
   
   //Default constructor
   boardGame(){ 
@@ -14,6 +15,7 @@ class boardGame{
     left =  new paddles(false, file);
     leftscore = 0;
     rightscore = 0;
+    count = 0;
     
     //End of function
     return;
@@ -25,8 +27,35 @@ class boardGame{
     this.ball = ball;
     this.right = right;
     this.left = left;
+    this.leftscore = 0;
+    this.rightscore = 0;
+    this.count = 0;
     
     //end of function
+    return;
+  }
+  
+  void increaseBallVelocity(){
+    /*
+    This function is going to increase the ball x and y velcity depending on how much the rally has been going
+    */
+    
+    //This will be the first change in velocity
+    if(count == 5){
+      ball.incXVel(0.02);
+      ball.incYVel(0.01);
+    }else if(count == 10){
+      ball.incXVel(0.05);
+      ball.incYVel(0.02);
+    }
+    
+    //If the count is much bigger and the ball needs to dramatically need to be increased
+    if(count >= 15){
+      ball.incXVel(1.0);
+      ball.incYVel(1.0);
+    }    
+    
+    //End of function
     return;
   }
   
@@ -36,7 +65,14 @@ class boardGame{
     */
     
     if(right.hasBallTouched(true, ball) || left.hasBallTouched(false, ball)){
+      //Changing how the ball is going to be bouncing back and forth
       ball.switchXVel();
+      
+      //Increase the count value
+      count++;
+      
+      //Change the speed of the ball
+      this.increaseBallVelocity();
     }
     
     //end of function
@@ -65,10 +101,12 @@ class boardGame{
     
     if(ball.ballCoordinates.x < 0){
       rightscore++;
-      ball.resetBall();
+      count = 0;
+      ball.moveLeft();
     }else if (ball.ballCoordinates.x > width){
       leftscore++;
-      ball.resetBall();
+      count = 0;
+      ball.moveRight();
     }
     
     //End of fuction
@@ -111,6 +149,10 @@ class boardGame{
     
     //Check if the ball if out of play
     this.addingPoints();
+    
+    println(count);
+    
+    println("Xvel: ", ball.xyVel.x, " YVel: ", ball.xyVel.y);
     
     //End of function
     return;
