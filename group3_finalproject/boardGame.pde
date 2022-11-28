@@ -1,18 +1,20 @@
 class boardGame{
   //Class variables
+
+  boolean two;
   ballMovement ball; //This variable corresponds to the ball
   paddles right; //This variable corresponds to the right paddle
   paddles left; //This variable corresponds to the left paddle 
   int leftscore; //This variable will count the score of the left player
   int rightscore; //This variable will count the score of the right player
   int count; //This varialble will count how long th rally is. If the rally is really big then we will increase the ball velocities
-  
+
   //Default constructor
   boardGame(){ 
     //Defining the class variables
     ball = new ballMovement();
-    right = new paddles(true, file);
-    left =  new paddles(false, file);
+    right = new paddles(true, file, 60);
+    left =  new paddles(false, file, 60);
     leftscore = 0;
     rightscore = 0;
     count = 0;
@@ -22,8 +24,9 @@ class boardGame{
   }
   
   //Specific constructor
-  boardGame(ballMovement ball, paddles left, paddles right){
+  boardGame(ballMovement ball, paddles left, paddles right, boolean two){
     //Defining the class variables
+    this.two = two;
     this.ball = ball;
     this.right = right;
     this.left = left;
@@ -39,7 +42,7 @@ class boardGame{
     /*
     This function is going to increase the ball x and y velcity depending on how much the rally has been going
     */
-    
+
     //This will be the first change in velocity
     if(count == 5){
       ball.incXVel(0.02);
@@ -48,13 +51,13 @@ class boardGame{
       ball.incXVel(0.05);
       ball.incYVel(0.02);
     }
-    
+
     //If the count is much bigger and the ball needs to dramatically need to be increased
     if(count >= 15){
       ball.incXVel(1.0);
       ball.incYVel(1.0);
     }    
-    
+
     //End of function
     return;
   }
@@ -70,9 +73,13 @@ class boardGame{
       
       //Increase the count value
       count++;
-      
+
       //Change the speed of the ball
       this.increaseBallVelocity();
+      
+      if (!this.two && left.hasBallTouched(false, ball)){
+        this.rightscore++;
+      }
     }
     
     //end of function
@@ -86,8 +93,11 @@ class boardGame{
     
     //Displaying the left players score
     fill(255);
-    textSize(30);    
-    text(leftscore, 40, 40);
+    textSize(30);
+    if (this.two){
+      text(leftscore, 40, 40);
+    }
+
     text(rightscore, width - 40, 40);    
     
     //end of function
@@ -151,7 +161,7 @@ class boardGame{
     this.addingPoints();
     
     println(count);
-    
+
     println("Xvel: ", ball.xyVel.x, " YVel: ", ball.xyVel.y);
     
     //End of function

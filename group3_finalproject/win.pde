@@ -16,7 +16,7 @@ class win extends menu{
     // Draw box, cat, and restart button
     rect(location.x, location.y, size.x, size.y);
     fill(0);
-    text(side + " wins!", location.x, location.y - size.y/4);
+    text(side, location.x, location.y - size.y/4);
     fill(255);
     restart_button.display();
     quit_button.display();

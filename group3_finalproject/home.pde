@@ -1,6 +1,8 @@
 class home extends menu{
   button single_button;
   button two_button;
+  boolean singlePlayer;
+  boolean twoPlayer;
   
   // Default constructor
   home(){
@@ -24,8 +26,12 @@ class home extends menu{
     // Start button
     if (single_button.buttonClicked()){
       this.pause = false;
+      this.singlePlayer = true;
+      this.twoPlayer = false;
     } else if (two_button.buttonClicked()){
       this.pause = false;
+      this.singlePlayer = false;
+      this.twoPlayer = true;
     }
   }
 

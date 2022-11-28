@@ -1,27 +1,31 @@
 class paddles{
   //Class variables
-  PVector paddlePos;
-  color paddleColor; 
-  float heightPaddle;
-  float widthPaddle;
-  float verticalSpeed;
+  PVector paddlePos; //This the x and y positions of the paddle
+  color paddleColor;  //This is the color of the paddle
+  float heightPaddle; //This is the height of the paddle
+  float widthPaddle; //This is the width of the paddle
+  float verticalSpeed; //This is the verticalSpeed of the paddle
+  boolean rightPaddle;
   SoundFile file;
+  boolean sound;
   
   //This is the default constructor that will create the left or right paddle
-  paddles(boolean rightPaddle, SoundFile file){
+  paddles(boolean rightPaddle, SoundFile file, float h){
     //Defining the class variables
-    this.heightPaddle = 60;
+    this.heightPaddle = h;
     this.widthPaddle = 10;
-    this.verticalSpeed = 30;
+    this.rightPaddle = rightPaddle;
+    this.verticalSpeed = this.heightPaddle;
     this.file = file;
+    this.sound = true;
     
-    if(rightPaddle){
+    if(this.rightPaddle){
       //If it is then we create the right paddle
-      this.paddlePos = new PVector(width - 2 * this.widthPaddle, height / 2);
+      this.paddlePos = new PVector(width - 4 * this.widthPaddle, height / 2);
             
     }else{
       //It it is false then we create the left paddle
-      this.paddlePos = new PVector(2 * this.widthPaddle, height / 2);
+      this.paddlePos = new PVector(4 * this.widthPaddle, height / 2);
     }
     
     //Establishing the color of both paddles
@@ -91,7 +95,9 @@ class paddles{
     */
     
     if((ball.ballCoordinates.y > paddlePos.y - (heightPaddle / 2)) && (ball.ballCoordinates.y < paddlePos.y + (heightPaddle / 2))){
-      file.play();
+      if (sound){
+        file.play();
+      }
       return true;
     }
     
@@ -149,14 +155,14 @@ class paddles{
     This function will check if the ball has touched the right or left paddle
     
     Inputs:
-      - rightPaddle: (boolean) it will see if the right paddle is in question currently
+      - this.rightPaddle: (boolean) it will see if the right paddle is in question currently
       - ball: (ballMovement) it is the current ball instance
       
      Output:
        It will return true or false
     */
    
-   if(rightPaddle){
+   if(this.rightPaddle){
      //This is the right paddle in question
      if(this.hasBallTouchedRight(ball)){
        return true;
@@ -177,6 +183,7 @@ class paddles{
     /*
     This function is going to display the paddle    
     */
+
     
     rectMode(CENTER);
     fill(this.paddleColor);
@@ -186,4 +193,7 @@ class paddles{
     return;
   }
   
+ 
+    
+ 
 }
