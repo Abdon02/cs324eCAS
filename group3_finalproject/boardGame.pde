@@ -1,7 +1,6 @@
 class boardGame{
   //Class variables
-
-  boolean two;
+  boolean two; //This boolean is whether it is a two player game or if it is a single player game
   ballMovement ball; //This variable corresponds to the ball
   paddles right; //This variable corresponds to the right paddle
   paddles left; //This variable corresponds to the left paddle 
@@ -44,16 +43,16 @@ class boardGame{
     */
 
     //This will be the first change in velocity
-    if(count == 5){
+    if(count == 3){
       ball.incXVel(0.02);
       ball.incYVel(0.01);
-    }else if(count == 10){
+    }else if(count == 5){
       ball.incXVel(0.05);
       ball.incYVel(0.02);
     }
 
     //If the count is much bigger and the ball needs to dramatically need to be increased
-    if(count >= 15){
+    if(count >= 9){
       ball.incXVel(1.0);
       ball.incYVel(1.0);
     }    
@@ -67,7 +66,8 @@ class boardGame{
     This function will modify the ball coordinates if it touched the paddles
     */
     
-    if(right.hasBallTouched(true, ball) || left.hasBallTouched(false, ball)){
+    //This is for 2 player game mode
+    if(right.hasBallTouched(ball) || left.hasBallTouched(ball)){
       //Changing how the ball is going to be bouncing back and forth
       ball.switchXVel();
       
@@ -77,7 +77,7 @@ class boardGame{
       //Change the speed of the ball
       this.increaseBallVelocity();
       
-      if (!this.two && left.hasBallTouched(false, ball)){
+      if (!this.two && left.hasBallTouched(ball)){
         this.rightscore++;
       }
     }
@@ -95,10 +95,10 @@ class boardGame{
     fill(255);
     textSize(30);
     if (this.two){
-      text(leftscore, 40, 40);
+      text(leftscore, 140, 40);
     }
 
-    text(rightscore, width - 40, 40);    
+    text(rightscore, width - 140, 40);    
     
     //end of function
     return;
@@ -109,17 +109,63 @@ class boardGame{
     This function is going to add points to the player that has won that point
     */
     
+    //Second player has scored
     if(ball.ballCoordinates.x < 0){
       rightscore++;
       count = 0;
       ball.moveLeft();
-    }else if (ball.ballCoordinates.x > width){
+    }else if (ball.ballCoordinates.x > width){ //Player 1 has scored
       leftscore++;
       count = 0;
       ball.moveRight();
     }
     
     //End of fuction
+    return;
+  }
+  
+  void moveSlidersSound(boolean [] arrayBools){
+    /*
+    This function is going to move the sliders.
+    
+    Inputs:
+      -arrayBools: It is an array that has boolean values
+      
+    Output:
+      - It will display nothing. It will move the sliders
+    */
+    
+    for(int i = 0; i < arrayBools.length; i++){
+      
+      //Moving the left slider up
+      if(arrayBools[i] && i == 0){
+        left.upPaddles();        
+      }
+      
+      //Moving the left slider down
+      if(arrayBools[i] && i == 1){
+        left.downPaddles();
+      }
+      
+      //Moving the right slider up
+      if(arrayBools[i] && i == 2){
+        right.upPaddles();
+      }
+      
+      //Moving the right slider down
+      if(arrayBools[i] && i == 3){
+        right.downPaddles();
+      }
+      
+      //This will turn on the sound
+      if(arrayBools[i] && i == 4){ 
+        right.changeSound();
+        left.changeSound();
+      }
+      
+    }
+    
+    //End of funtion
     return;
   }
   
@@ -132,7 +178,7 @@ class boardGame{
     background(0);
     noStroke();
     fill(255);
-    for (int i = 10; i<=height -10; i+= 30){
+    for (int i = 10; i<= height -10; i+= 30){
       rect(width/2, i, 20, 20);
     }
     
@@ -160,9 +206,8 @@ class boardGame{
     //Check if the ball if out of play
     this.addingPoints();
     
-    println(count);
-
-    println("Xvel: ", ball.xyVel.x, " YVel: ", ball.xyVel.y);
+    //Printing the ball velocity
+    //println("ballVel, xVel: ", ball.xyVel.x, " yVel: ", ball.xyVel.y);
     
     //End of function
     return;

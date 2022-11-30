@@ -9,6 +9,7 @@ paddles wall;
 boardGame twoGame;
 boardGame singleGame;
 SoundFile file;
+boolean [] moveArray;
 
 void setup(){
   size(800, 500);
@@ -32,6 +33,9 @@ void setup(){
   
   // Initializing the singleGame
   singleGame = new boardGame(ball, wall, right, false);
+  
+  //Creating the movement array that will be used to move the paddles
+  moveArray = createBooleanArray();
 }
 
 void draw(){ 
@@ -67,6 +71,10 @@ void draw(){
         singleGame.display();
       }
     }
+    
+    //This will move the sliders for the single game
+    singleGame.moveSlidersSound(moveArray);
+    
   } else if (h1.twoPlayer){ // If two player mode
     if (o1.restart || w1.restart){ // If restarting game
       //initializing the twoGame
@@ -95,8 +103,63 @@ void draw(){
         // Not win conditions
         twoGame.display();
       }
-    } 
+    }
+    
+    //Display movement of the sliders
+    twoGame.moveSlidersSound(moveArray);
   }
+}
+
+boolean [] createBooleanArray(){
+  /*
+  This function is going to return an array that will hold all the movement
+  
+  The array will have 4 elements in the array
+  
+  The first element will be the w key for player 1 moving the left paddle upward
+  The second element will be the s key for player 1 moving the left paddle downward
+  The third element will be the UP key for player 2 moving the right paddle upward
+  The fourth element will be the DOWN key for player 2 moving the right paddle downward
+  The fifth element will see if there is a sound to the game
+  */
+  
+  //This is the array that will hold all the possible movements
+  boolean [] array = {false, false, false, false, false};
+  
+  //Returning the array
+  return array;
+}
+
+void keyReleased(){
+  /*
+  This function is going to be used when a key is released
+  */
+  
+  //Changing the position of the left paddle
+  if(key == 'w' || key == 'W'){
+    //Changing the value of the left paddle movement
+    moveArray[0] = false;    
+  }else if(key == 's' || key == 'S'){
+    //Changing the value of the left paddle movement
+    moveArray[1] = false;
+  }
+  
+  //Changing the position of the right paddle
+  if(keyCode == UP){
+    //Increasing the position of the right paddle
+    moveArray[2] = false;
+  }else if(keyCode == DOWN){
+    //Decreasing the position of the right paddle
+    moveArray[3] = false;
+  }
+  
+  //Wether there should be sound or not
+  if (key == 'v' || key == 'V'){
+    moveArray[4] = false;
+  }
+  
+  //End of function
+  return;
 }
 
 void keyPressed(){
@@ -104,28 +167,27 @@ void keyPressed(){
   This function is going to be used when a key is pressed
   */   
    
-   
+  //Changing the position of the left paddle
   if(key == 'w' || key == 'W'){
-    //Increasing the position of the left paddle
-    left.upPaddles();  
-  } else if(key == 's' || key == 'S'){
-    //decreasing the position of the left paddle
-    left.downPaddles();
+    //Changing the value of the left paddle movement
+    moveArray[0] = true;    
+  }else if(key == 's' || key == 'S'){
+    //Changing the value of the left paddle movement
+    moveArray[1] = true;
   }
   
+  //Changing the position of the right paddle
   if(keyCode == UP){
     //Increasing the position of the right paddle
-    right.upPaddles();
+    moveArray[2] = true;
   }else if(keyCode == DOWN){
     //Decreasing the position of the right paddle
-    right.downPaddles();
+    moveArray[3] = true;
   } 
-  
-  
+    
   // V to toggle sound when ball hits paddle
   if (key == 'v' || key == 'V'){
-    left.sound = !left.sound;
-    right.sound = !right.sound;
+    moveArray[4] = true;
   }
   
   //End of function

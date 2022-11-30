@@ -4,6 +4,7 @@ class ballMovement{
   PVector ballCoordinates; //This is the ball coordinates that will be changing around the game
   float sizeBall; //This will be the radius of the ball that will be displayed
   PVector xyVel; //This is the x and y velcity that will change accordingly as the ball bounces around
+  float totalVelocity; //This is the total velocity
   float xVel; //This variable will hold the original xVal velocity
   float yVel; //This variable will hold the original yVal velocity
   
@@ -13,27 +14,29 @@ class ballMovement{
     this.ballColor = color (255, 255, 255);
     this.ballCoordinates = new PVector(width/2, height / 2);
     this.sizeBall = 15;
-    this.xyVel = new PVector(3, 1);    
-    this.xVel = this.xyVel.x;
-    this.yVel = this.xyVel.y;
+    this.totalVelocity = 5.;
+    
+    //Setting up the velocity values that will move the ball around
+    this.setUpXandYSpeed();
     
     //End of function
     return;
-  }  
+  }    
   
-  //Special constructor
-  ballMovement(color ballColor, float sizeBall, PVector xyVel){
-    //Defining the class variables
-    this.ballColor = ballColor;
-    this.ballCoordinates = new PVector(width / 2, height / 2);
-    this.sizeBall = sizeBall;
-    this.xyVel = xyVel;
+  void setUpXandYSpeed(){
+    /*
+    This function is going to set up the x and y velocity values
+    */
+    
+    //This is getting a randomAngle value
+    float randomAngle = random(PI/2);
+    this.xyVel = new PVector(this.totalVelocity * cos(randomAngle), this.totalVelocity * sin(randomAngle));    
     this.xVel = this.xyVel.x;
     this.yVel = this.xyVel.y;
     
     //End of function
     return;
-  }  
+  }
   
   void switchXVel(){
     /*
@@ -100,11 +103,11 @@ class ballMovement{
   
   void changeYvel(){
     /*
-    This function is going to change the y value of the velocity
+    This function is going to change the y value of the velocity once a point has been scored
     */
 
     if(random(0, 1) <= 0.5){
-      this.xyVel.y = -this.xyVel.y;
+      this.switchYVel();
     }else{
       this.xyVel.y = this.xyVel.y;
     }
@@ -113,14 +116,21 @@ class ballMovement{
     return;
   }
 
-  void originalVelocities(){
+  void changeVelocites(boolean rightWon){
     /*
-    This function is going to change to the original velocity
+    This function is going to change to the magnitude of the original velocities back to normal
+    
+    Input:
+      - righWon: It is a boolean to see if the right player had won that battle
     */
-
-    //Changing the values of velcities back
-    this.xyVel.x = this.xVel;
-    this.xyVel.y = this.yVel;
+    
+    //Getting new x and y values for the ball to follow
+    this.setUpXandYSpeed();
+    
+    //Changing the values of velocities back
+    if(rightWon){
+      this.xyVel.x = -this.xyVel.x;
+    }
 
     //End of function
     return;
@@ -163,13 +173,16 @@ class ballMovement{
     */
 
     //Change the velocites back to its original values
-    this.originalVelocities();
+    this.changeVelocites(false);
 
     //Change the y velocity
     this.changeYvel();
 
     //Moving the ball to the middle of the canvas
     this.resetBall();
+    
+    //Printing the velocity of the ball
+    //println("mRight, xVel: ", this.xyVel.x, " yVel: ", this.xyVel.y);
 
     //End of function
     return;
@@ -182,14 +195,28 @@ class ballMovement{
     */
 
     //Change the velocites back to its original values
-    this.originalVelocities();
+    this.changeVelocites(true);
 
-    //Change the y velocity
+    //Change the y velocity direction
     this.changeYvel();
 
     //Moving the ball to the middle of the canvas
     this.resetBall();
+    
+    //Printing the velocity
+    //println("mLeft, xVel: ", this.xyVel.x, " yVel: ", this.xyVel.y);
 
+    //End of function
+    return;
+  }
+  
+  void createBHiearchy(){
+    /*
+    This function is going to create a hiearchy of the pong ball
+    
+    The idea is that there will be a lagging ball following the bouncing ball
+    */
+    
     //End of function
     return;
   }

@@ -15,7 +15,7 @@ class paddles{
     this.heightPaddle = h;
     this.widthPaddle = 10;
     this.rightPaddle = rightPaddle;
-    this.verticalSpeed = this.heightPaddle;
+    this.verticalSpeed = 10;
     this.file = file;
     this.sound = true;
     
@@ -116,7 +116,8 @@ class paddles{
       it will return true or false if the ball did hit the paddle    
     */
     
-    if(ball.ballCoordinates.x + (ball.sizeBall / 2) > paddlePos.x - (widthPaddle / 2)){
+    //Making sure that the ball is within 
+    if((ball.ballCoordinates.x + (ball.sizeBall / 2) > paddlePos.x - (widthPaddle / 2)) && (ball.ballCoordinates.x + (ball.sizeBall / 2) < paddlePos.x)){
       //The ball's y coordinate hit within the height of the paddle
       if(this.ballHitHeight(ball)){
         return true;
@@ -139,7 +140,7 @@ class paddles{
       it will return true or false if the ball did hit the paddle    
     */
     
-    if(ball.ballCoordinates.x - (ball.sizeBall / 2) < paddlePos.x + (widthPaddle / 2)){
+    if(ball.ballCoordinates.x - (ball.sizeBall / 2) < paddlePos.x + (widthPaddle / 2) && (ball.ballCoordinates.x - (ball.sizeBall / 2) > paddlePos.x)){
       //The ball's y coordinate hit the height of the board
       if(this.ballHitHeight(ball)){
         return true;
@@ -150,7 +151,7 @@ class paddles{
     return false;    
   }
   
-  boolean hasBallTouched(boolean rightPaddle, ballMovement ball){
+  boolean hasBallTouched(ballMovement ball){
     /*
     This function will check if the ball has touched the right or left paddle
     
@@ -179,12 +180,36 @@ class paddles{
     
   }
   
+  void changeSound(){
+    /*
+    This function is going to change the value if the sound will be on or off.    
+    */
+    
+    //Changing the value of the sound
+    this.sound = !this.sound;
+    
+    //End of function
+    return;
+  }
+  
+  void createPHiearchy(){
+    /*
+    This function is going to create paddle hiearchy for a paddle
+    
+    The idea is to have rotating balls around a paddle.
+    */    
+    
+    
+    //End of function
+    return;
+  }
+  
   void display(){
     /*
     This function is going to display the paddle    
     */
 
-    
+    //Drawing the paddle onto the canvas    
     rectMode(CENTER);
     fill(this.paddleColor);
     rect(this.paddlePos.x, this.paddlePos.y, this.widthPaddle, this.heightPaddle);
