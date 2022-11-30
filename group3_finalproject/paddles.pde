@@ -91,7 +91,7 @@ class paddles{
     */
     
     if((ball.ballCoordinates.y > paddlePos.y - (heightPaddle / 2)) && (ball.ballCoordinates.y < paddlePos.y + (heightPaddle / 2))){
-      file.play();
+      bounce.play();
       return true;
     }
     
@@ -184,6 +184,5 @@ class paddles{
     
     //End of function
     return;
-  }
-  
+  } 
 }
