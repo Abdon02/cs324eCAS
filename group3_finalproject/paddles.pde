@@ -99,7 +99,7 @@ class paddles{
     This function is going to check if the ball hits the height of the paddle
     */
     
-    if((ball.ballCoordinates.y > paddlePos.y - (heightPaddle / 2)) && (ball.ballCoordinates.y < paddlePos.y + (heightPaddle / 2))){
+    if((ball.ballCoordinates.y >= paddlePos.y - (heightPaddle / 2)) && (ball.ballCoordinates.y <= paddlePos.y + (heightPaddle / 2))){
       if (sound){
         bounce.play();
       }
@@ -122,7 +122,7 @@ class paddles{
     */
     
     //Making sure that the ball is within 
-    if((ball.ballCoordinates.x + (ball.sizeBall / 2) > paddlePos.x - (widthPaddle / 2)) && (ball.ballCoordinates.x + (ball.sizeBall / 2) < paddlePos.x)){
+    if((ball.ballCoordinates.x + (ball.sizeBall / 2) >= paddlePos.x - (widthPaddle / 2)) && (ball.ballCoordinates.x + (ball.sizeBall / 2) <= paddlePos.x)){
       //The ball's y coordinate hit within the height of the paddle
       if(this.ballHitHeight(ball)){
         return true;
@@ -145,7 +145,7 @@ class paddles{
       it will return true or false if the ball did hit the paddle    
     */
     
-    if(ball.ballCoordinates.x - (ball.sizeBall / 2) < paddlePos.x + (widthPaddle / 2) && (ball.ballCoordinates.x - (ball.sizeBall / 2) > paddlePos.x)){
+    if(ball.ballCoordinates.x - (ball.sizeBall / 2) <= paddlePos.x + (widthPaddle / 2) && (ball.ballCoordinates.x - (ball.sizeBall / 2) >= paddlePos.x)){
       //The ball's y coordinate hit the height of the board
       if(this.ballHitHeight(ball)){
         return true;

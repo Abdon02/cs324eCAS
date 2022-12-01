@@ -78,7 +78,9 @@ void draw(){
       if (singleGame.leftscore == 1){
         singleGame.ball.xyVel = new PVector (0, 0);
         singleGame.display();
-        win.play();
+        if (moveArray[4]){
+          win.play();
+        }
         w1.display("Score: " + singleGame.rightscore, h1);
         singleGame.singleData.saveData(singleGame.rightscore);
       } else {
@@ -108,13 +110,17 @@ void draw(){
       if (twoGame.leftscore == 10){
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        win.play();
+        if (moveArray[4]){
+          win.play();
+        }
         w1.display("Left wins!", h1);
       } else if (twoGame.rightscore == 10){
       // Display the twoGame
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        win.play();
+        if (moveArray[4]){
+          win.play();
+        }
         w1.display("Right wins!", h1);
       } else {
         // Not win conditions
@@ -209,7 +215,7 @@ void keyPressed(){
   
   if(key == 'm' || key == 'M'){
     if (music == true){
-      background.play();
+      background.loop();
       music = false;
     } 
     else if (music == false){
