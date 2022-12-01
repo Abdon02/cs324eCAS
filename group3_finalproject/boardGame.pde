@@ -8,6 +8,7 @@ class boardGame{
   int leftscore; //This variable will count the score of the left player
   int rightscore; //This variable will count the score of the right player
   int count; //This varialble will count how long th rally is. If the rally is really big then we will increase the ball velocities
+  singlePlayerData singleData; //This variable corresponds to saved data for single player mode
 
   //Default constructor
   boardGame(){ 
@@ -27,6 +28,7 @@ class boardGame{
   boardGame(ballMovement ball, paddles left, paddles right, boolean two){
     //Defining the class variables
     this.two = two;
+    this.singleData = new singlePlayerData();
     this.ball = ball;
     this.right = right;
     this.left = left;
@@ -78,7 +80,7 @@ class boardGame{
       //Change the speed of the ball
       this.increaseBallVelocity();
       
-      if (!this.two && left.hasBallTouched(ball)){
+      if (!this.two && right.hasBallTouched(ball)){
         this.rightscore++;
       }
     }
@@ -97,6 +99,8 @@ class boardGame{
     textSize(30);
     if (this.two){
       text(leftscore, 140, 40);
+    } else {
+      text("High Score: " + singleData.maxScore, 150, 40);
     }
 
     text(rightscore, width - 140, 40);    

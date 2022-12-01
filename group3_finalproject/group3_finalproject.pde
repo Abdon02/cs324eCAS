@@ -13,8 +13,9 @@ boardGame singleGame;
 SoundFile file;
 boolean [] moveArray;
 SoundFile background, bounce;
-//AudioPlayer win;
+AudioPlayer win;
 boolean music, effects;
+
 
 
 void setup(){
@@ -27,6 +28,7 @@ void setup(){
   background = new SoundFile(this, "./files/background.mp3");
   minim = new Minim(this);
   win = minim.loadFile("./files/clapping.mp3");
+
 
   
   //Initilizing the ball
@@ -78,6 +80,7 @@ void draw(){
         singleGame.display();
         win.play();
         w1.display("Score: " + singleGame.rightscore, h1);
+        singleGame.singleData.saveData(singleGame.rightscore);
       } else {
         // Not win conditions
         singleGame.display();
@@ -204,7 +207,7 @@ void keyPressed(){
     moveArray[4] = true;
   }
   
-  if(key == 'm'){
+  if(key == 'm' || key == 'M'){
     if (music == true){
       background.play();
       music = false;

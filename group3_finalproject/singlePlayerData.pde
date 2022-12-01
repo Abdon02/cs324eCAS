@@ -1,15 +1,34 @@
-/*
 class singlePlayerData{
   Table t;
-  int[] singleData;
-  
+  int maxScore;
+
   singlePlayerData(){
     t=loadTable("singleData.csv", "header");
-    singleData =  new int[100000]; // Fix for flexible allocation
+    maxScore = 0;
     for (TableRow r : t.rows()){
-      t.append(r.getString("Score"));
-      //singleData.add(r.getInt("Score"));
+      int rowScore = r.getInt("Score");
+      if (rowScore > maxScore){
+        maxScore = rowScore;
+      }
     }
   }
+  
+  void saveData(int score){
+    boolean repeat = false;
+    for (TableRow r : t.rows()){
+      if (r.getInt("Score") == score){
+        repeat = true;
+        break;
+      }
+    }
+    
+    if (!repeat){
+      TableRow newRow = t.addRow();
+      newRow.setInt("Score", score);
+      if (score > maxScore){
+        maxScore = score;
+      }
+      saveTable(t, "singleData.csv");
+    }    
+  }
 }
-*/
