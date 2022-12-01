@@ -17,7 +17,6 @@ AudioPlayer win;
 boolean music, effects;
 
 
-
 void setup(){
   size(800, 500);
   h1 = new home();
@@ -64,8 +63,7 @@ void draw(){
   } else if (h1.singlePlayer){ // If single player mode
     if (o1.restart || w1.restart){ // If restarting game
       //Initializing the singleGame
-      ball = new ballMovement();
-  
+      ball = new ballMovement();  
       //Initilizing the paddles
       right = new paddles(true, file, 60);  
       wall = new paddles(false, file, height);

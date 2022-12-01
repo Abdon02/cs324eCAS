@@ -100,7 +100,7 @@ class boardGame{
     if (this.two){
       text(leftscore, 140, 40);
     } else {
-      text("High Score: " + singleData.maxScore, 150, 40);
+      text("High Score: " + singleData.maxScore, 160, 40);
     }
 
     text(rightscore, width - 140, 40);    
