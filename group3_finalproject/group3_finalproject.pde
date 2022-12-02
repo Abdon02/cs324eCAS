@@ -14,7 +14,7 @@ SoundFile file;
 boolean [] moveArray;
 SoundFile background, bounce;
 AudioPlayer win;
-boolean music, effects;
+boolean music;
 
 
 
@@ -30,7 +30,6 @@ void setup(){
   win = minim.loadFile("./files/clapping.mp3");
 
 
-  
   //Initilizing the ball
   ball = new ballMovement();
   
@@ -108,13 +107,15 @@ void draw(){
       if (twoGame.leftscore == 10){
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        win.play();
+         if (music == true){
+          win.play();}
         w1.display("Left wins!", h1);
       } else if (twoGame.rightscore == 10){
       // Display the twoGame
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        win.play();
+         if (music == true){
+          win.play();}
         w1.display("Right wins!", h1);
       } else {
         // Not win conditions
