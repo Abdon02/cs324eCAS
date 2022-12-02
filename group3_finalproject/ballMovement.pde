@@ -7,6 +7,7 @@ class ballMovement{
   float totalVelocity; //This is the total velocity
   float xVel; //This variable will hold the original xVal velocity
   float yVel; //This variable will hold the original yVal velocity
+  float theta;
   
   //Default constructor
   ballMovement(){
@@ -15,6 +16,7 @@ class ballMovement{
     this.ballCoordinates = new PVector(width/2, height / 2);
     this.sizeBall = 15;
     this.totalVelocity = 5.;
+    this.theta = 0;
     
     //Setting up the velocity values that will move the ball around
     this.setUpXandYSpeed();
@@ -29,7 +31,7 @@ class ballMovement{
     */
     
     //This is getting a randomAngle value
-    float randomAngle = random(PI/2);
+    float randomAngle = random(-PI/3, PI/3);
     this.xyVel = new PVector(this.totalVelocity * cos(randomAngle), this.totalVelocity * sin(randomAngle));    
     this.xVel = this.xyVel.x;
     this.yVel = this.xyVel.y;
@@ -96,6 +98,7 @@ class ballMovement{
     //If the ball is out of play then it gets reset back to the middle of the canvas
     ballCoordinates.x = width / 2;
     ballCoordinates.y = height / 2;
+    this.switchXVel();
     
     //End of function
     return;
@@ -230,6 +233,12 @@ class ballMovement{
     ellipseMode(CENTER);
     fill(ballColor);
     ellipse(ballCoordinates.x, ballCoordinates.y, sizeBall, sizeBall);
+    pushMatrix();
+      translate(4 * sin(this.theta),  4 * cos(this.theta));
+      fill(random(255), random(255), random(255));
+      ellipse(ballCoordinates.x , ballCoordinates.y, sizeBall/2, sizeBall/2);
+    popMatrix();
+    this.theta += PI/20;
     
     //End of function
     return;

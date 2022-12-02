@@ -32,6 +32,7 @@ class options extends menu{
       this.pause = false;
       this.restart = true;
       home1.pause = true;
+      delay(200);
       // Other quit options
     }
     

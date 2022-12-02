@@ -31,6 +31,7 @@ class win extends menu{
       this.pause = false;
       this.restart = true;
       h1.pause = true;
+      delay(200);
     }
   }
   
