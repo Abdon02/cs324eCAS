@@ -24,17 +24,28 @@ class button {
   
   // Return if button clicked
   boolean buttonClicked(){
-    if(abs(mouseX - this.pos.x) <= this.size.x/2 && abs(mouseY - this.pos.y) <= this.size.y/2 && mousePressed){
+    if(this.buttonHover() && mousePressed){
         return true;
       }
       return false;
     }
     
+  boolean buttonHover(){
+    if(abs(mouseX - this.pos.x) <= this.size.x/2 && abs(mouseY - this.pos.y) <= this.size.y/2){
+        return true;
+    }
+      return false;
+  }    
   
   // Define display
   void display(){
     textAlign(CENTER);
     textSize(40);
+    if (this.buttonHover()) {
+      fill(245, 234, 153);
+    } else {
+      fill(255);
+    }
     rect(this.pos.x, this.pos.y, this.size.x, this.size.y);
     fill(0);
     text(this.type, this.pos.x, this.pos.y + 15);

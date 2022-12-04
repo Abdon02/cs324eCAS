@@ -76,6 +76,8 @@ class boardGame{
       
       //Increase the count value
       count++;
+      
+      delay(50);
 
       //Change the speed of the ball
       this.increaseBallVelocity();

@@ -51,9 +51,9 @@ void setup(){
 }
 
 void draw(){ 
+  println(singleGame.left.sound);
   // Options menu
-  o1.keyPressed(h1);
-  
+  o1.keyPressed(h1);  
   // Game play
   if (h1.pause){
     background(0); // Display home menu
@@ -76,7 +76,7 @@ void draw(){
       if (singleGame.leftscore == 1){
         singleGame.ball.xyVel = new PVector (0, 0);
         singleGame.display();
-        if (moveArray[4]){
+        if (singleGame.left.sound){
           win.play();
         }
         w1.display("Score: " + singleGame.rightscore, h1);
@@ -108,7 +108,7 @@ void draw(){
       if (twoGame.leftscore == 10){
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        if (moveArray[4]){
+        if (twoGame.left.sound){
           win.play();
         }
         w1.display("Left wins!", h1);
@@ -116,7 +116,7 @@ void draw(){
       // Display the twoGame
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        if (moveArray[4]){
+        if (twoGame.left.sound){
           win.play();
         }
         w1.display("Right wins!", h1);
@@ -212,13 +212,11 @@ void keyPressed(){
   }
   
   if(key == 'm' || key == 'M'){
+    music = !music;
     if (music == true){
       background.loop();
-      music = false;
-    } 
-    else if (music == false){
+    } else {
       background.pause();
-      music = true;
     }
   }
   

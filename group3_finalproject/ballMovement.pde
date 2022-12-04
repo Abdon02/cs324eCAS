@@ -213,12 +213,16 @@ class ballMovement{
     return;
   }
   
-  void createBHiearchy(){
+  void BHierarchy(){
     /*
     This function is going to create a hiearchy of the pong ball
-    
-    The idea is that there will be a lagging ball following the bouncing ball
     */
+    pushMatrix();
+      translate(4 * sin(this.theta),  4 * cos(this.theta));
+      fill(random(255), random(255), random(255));
+      ellipse(ballCoordinates.x , ballCoordinates.y, sizeBall/2, sizeBall/2);
+    popMatrix();
+    this.theta += PI/20;
     
     //End of function
     return;
@@ -233,12 +237,7 @@ class ballMovement{
     ellipseMode(CENTER);
     fill(ballColor);
     ellipse(ballCoordinates.x, ballCoordinates.y, sizeBall, sizeBall);
-    pushMatrix();
-      translate(4 * sin(this.theta),  4 * cos(this.theta));
-      fill(random(255), random(255), random(255));
-      ellipse(ballCoordinates.x , ballCoordinates.y, sizeBall/2, sizeBall/2);
-    popMatrix();
-    this.theta += PI/20;
+    this.BHierarchy();
     
     //End of function
     return;
