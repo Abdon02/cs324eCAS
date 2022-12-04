@@ -14,8 +14,8 @@ class boardGame{
   boardGame(){ 
     //Defining the class variables
     ball = new ballMovement();
-    right = new paddles(true, bounce, 60);
-    left =  new paddles(false, bounce, 60);
+    right = new paddles(true, bounce, 60, effects);
+    left =  new paddles(false, bounce, 60, effects);
     leftscore = 0;
     rightscore = 0;
     count = 0;
@@ -164,11 +164,6 @@ class boardGame{
         right.downPaddles();
       }
       
-      //This will turn on the sound
-      if(arrayBools[i] && i == 4){ 
-        right.changeSound();
-        left.changeSound();
-      }
       
     }
     

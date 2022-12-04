@@ -27,6 +27,7 @@ void setup(){
   background = new SoundFile(this, "./files/background.mp3");
   minim = new Minim(this);
   win = minim.loadFile("./files/clapping.mp3");
+  effects = true;
 
 
   
@@ -34,9 +35,9 @@ void setup(){
   ball = new ballMovement();
   
   //Initilizing the paddles
-  right = new paddles(true, file, 60);
-  left = new paddles(false, file, 60);  
-  wall = new paddles(false, file, height);
+  right = new paddles(true, file, 60, effects);
+  left = new paddles(false, file, 60, effects);  
+  wall = new paddles(false, file, height, effects);
   
   //Initializing the twoGame
   twoGame = new boardGame(ball, left, right, true);
@@ -48,10 +49,10 @@ void setup(){
   
   //Creating the movement array that will be used to move the paddles
   moveArray = createBooleanArray();
+  
 }
 
 void draw(){ 
-  println(singleGame.left.sound);
   // Options menu
   o1.keyPressed(h1);  
   // Game play
@@ -62,11 +63,15 @@ void draw(){
     o1.display(h1); // Display options menu (only possible if home menu not displayed)
   } else if (h1.singlePlayer){ // If single player mode
     if (o1.restart || w1.restart){ // If restarting game
+      // Rewind sound
+      win.rewind();
+      win.pause();
+      
       //Initializing the singleGame
       ball = new ballMovement();  
       //Initilizing the paddles
-      right = new paddles(true, file, 60);  
-      wall = new paddles(false, file, height);
+      right = new paddles(true, file, 60, effects);  
+      wall = new paddles(false, file, height, effects);
   
       singleGame = new boardGame(ball, wall, right, false);
       o1.restart = false;
@@ -76,7 +81,8 @@ void draw(){
       if (singleGame.leftscore == 1){
         singleGame.ball.xyVel = new PVector (0, 0);
         singleGame.display();
-        if (singleGame.left.sound){
+        if (effects){
+          print("single game effects");
           win.play();
         }
         w1.display("Score: " + singleGame.rightscore, h1);
@@ -92,12 +98,16 @@ void draw(){
     
   } else if (h1.twoPlayer){ // If two player mode
     if (o1.restart || w1.restart){ // If restarting game
+      // Rewind sound
+      win.rewind();
+      win.pause();
+      
       //initializing the twoGame
       ball = new ballMovement();
   
       //Initilizing the paddles
-      right = new paddles(true, file, 60);
-      left = new paddles(false, file, 60);
+      right = new paddles(true, file, 60, effects);
+      left = new paddles(false, file, 60, effects);
   
       twoGame = new boardGame(ball, left, right, true);
       o1.restart = false;
@@ -108,7 +118,7 @@ void draw(){
       if (twoGame.leftscore == 10){
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        if (twoGame.left.sound){
+        if (effects){
           win.play();
         }
         w1.display("Left wins!", h1);
@@ -116,7 +126,7 @@ void draw(){
       // Display the twoGame
         twoGame.ball.xyVel = new PVector (0, 0);
         twoGame.display();
-        if (twoGame.left.sound){
+        if (effects){
           win.play();
         }
         w1.display("Right wins!", h1);
@@ -174,10 +184,6 @@ void keyReleased(){
     moveArray[3] = false;
   }
   
-  //Wether there should be sound or not
-  if (key == 'v' || key == 'V'){
-    moveArray[4] = false;
-  }
   
   //End of function
   return;
@@ -206,11 +212,16 @@ void keyPressed(){
     moveArray[3] = true;
   } 
     
-  // V to toggle sound when ball hits paddle
+  // V to toggle sound when ball hits paddle and win sound
   if (key == 'v' || key == 'V'){
-    moveArray[4] = true;
+    effects = !effects;
+    twoGame.left.sound = !twoGame.left.sound;
+    twoGame.right.sound = !twoGame.right.sound;
+    singleGame.left.sound = !singleGame.left.sound;
+    singleGame.right.sound = !singleGame.right.sound;
   }
   
+  // M to toggle music
   if(key == 'm' || key == 'M'){
     music = !music;
     if (music == true){

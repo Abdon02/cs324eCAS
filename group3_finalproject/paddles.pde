@@ -13,14 +13,14 @@ class paddles{
   
   
   //This is the default constructor that will create the left or right paddle
-  paddles(boolean rightPaddle, SoundFile file, float h){
+  paddles(boolean rightPaddle, SoundFile file, float h, boolean effects){
     //Defining the class variables
     this.heightPaddle = h;
     this.widthPaddle = 10;
     this.rightPaddle = rightPaddle;
     this.verticalSpeed = 10;
     this.file = file;
-    this.sound = true;
+    this.sound = effects; //true;
     
     if(this.rightPaddle){
       //If it is then we create the right paddle
