@@ -9,7 +9,8 @@ class paddles{
   boolean rightPaddle;
   SoundFile file;
   boolean sound;
-
+  float speed;
+  float y;
   
   
   //This is the default constructor that will create the left or right paddle
@@ -21,7 +22,7 @@ class paddles{
     this.verticalSpeed = 10;
     this.file = file;
     this.sound = effects; //true;
-    
+
     if(this.rightPaddle){
       //If it is then we create the right paddle
       this.paddlePos = new PVector(width - 4 * this.widthPaddle, height / 2);
@@ -48,6 +49,9 @@ class paddles{
     this.heightPaddle = heightPaddle;
     this.widthPaddle = widthPaddle;
     this.verticalSpeed = verticalSpeed;
+    this.speed = 0;
+    this.y = 0;
+    
     
     //End of function
     return;    
@@ -197,15 +201,15 @@ class paddles{
     return;
   }
   
-  void createPHiearchy(){
-    /*
-    This function is going to create paddle hiearchy for a paddle
-    
-    The idea is to have rotating balls around a paddle.
-    */    
-    
-    
-    //End of function
+  void createPHierarchy(){
+
+      this.y = this.paddlePos.y + this.speed;
+      if (this.y > this.paddlePos.y + 25|| this.y < this.paddlePos.y - 25) {
+    this.speed *= -1;}
+      fill(random(255), random(255), random(255));
+      ellipse(this.paddlePos.x , this.y, 5, 5);
+      this.speed += 0.25;
+        //End of function
     return;
   }
   
@@ -218,6 +222,7 @@ class paddles{
     rectMode(CENTER);
     fill(this.paddleColor);
     rect(this.paddlePos.x, this.paddlePos.y, this.widthPaddle, this.heightPaddle);
+    this.createPHierarchy();
     
     //End of function
     return;

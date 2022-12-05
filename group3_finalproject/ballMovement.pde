@@ -214,9 +214,6 @@ class ballMovement{
   }
   
   void BHierarchy(){
-    /*
-    This function is going to create a hiearchy of the pong ball
-    */
     pushMatrix();
       translate(4 * sin(this.theta),  4 * cos(this.theta));
       fill(random(255), random(255), random(255));
