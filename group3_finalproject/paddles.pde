@@ -209,6 +209,7 @@ class paddles{
       fill(random(255), random(255), random(255));
       ellipse(this.paddlePos.x , this.y, 5, 5);
       this.speed += 0.25;
+      fill(0);
         //End of function
     return;
   }
