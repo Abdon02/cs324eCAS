@@ -6,16 +6,16 @@ Steps:
 1. Make sure that inside the folder "group3_finalproject" has the following files:
 	"ballMovement.pde"
 	"boardGame.pde"
-  "button.pde"
+	"button.pde"
 	"group3_finalproject.pde"
 	"home.pde"
 	"menu.pde"
 	"options.pde"
 	"paddles.pde"
-  "singlePlayerData.pde"
-  "sprite.pde"
+	"singlePlayerData.pde"
+	"sprite.pde"
 	"win.pde"
-  "singleData.csv"
+	"singleData.csv"
 	"/files/background.mp3"
 	"/files/bounce.mp3"
 	"/files/clapping.mp3"
@@ -30,5 +30,5 @@ Steps:
 
 5. Rules of the game:
 	1. One player: Bounce the ball against the wall continuously, trying to beat the high   score. If the ball passes your paddle, the game is over.
-  2. Two players: Bounce the ball between the two paddles. If the paddle passes your paddle, your opponent gains a point. First player to 10 points wins.
+  	2. Two players: Bounce the ball between the two paddles. If the paddle passes your paddle, your opponent gains a point. First player to 10 points wins.
 
