@@ -15,6 +15,7 @@ class options extends menu{
   // Define display
   void display(home home1){
     stroke(0);
+    fill(255);
 
     // Display box and buttons
     rect(location.x, location.y, size.x, size.y);

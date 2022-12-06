@@ -82,7 +82,6 @@ void draw(){
         singleGame.ball.xyVel = new PVector (0, 0);
         singleGame.display();
         if (effects){
-          print("single game effects");
           win.play();
         }
         w1.display("Score: " + singleGame.rightscore, h1);

@@ -12,6 +12,7 @@ class win extends menu{
   // Define display
   void display(String side, home h1){
     stroke(0);
+    fill(255);
 
     // Draw box, cat, and restart button
     rect(location.x, location.y, size.x, size.y);
